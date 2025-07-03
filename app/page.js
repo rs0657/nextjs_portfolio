@@ -343,8 +343,8 @@ const Experience = () => {
         "Collaborated with teamates to enhance application performance and user experience"
       ],
       technologies: ["ReactJs", "MongoDB", "ExpressJS", "UI/UX","Github"],
-      logoUrl: "/tcs-logo.png", // Add Gevinst Technologies logo
-      logoPlaceholder: "GT",
+      logoUrl: "/tcs-logo.png", // Add TCS logo
+      logoPlaceholder: "TCS",
       color: "from-green-600 to-blue-600",
       bgColor: "from-green-600/10 to-blue-600/10"
     },
@@ -360,8 +360,8 @@ const Experience = () => {
         "Collaborated with senior developers on Application Tracking System (ATS) project Development"
       ],
       technologies: ["MongoDB", "SQL",  ],
-      logoUrl: "/Sesheng-logo.png", // Add Gevinst Technologies logo
-      logoPlaceholder: "GT",
+      logoUrl: "/Sesheng-Logo.png", // Add Sesheng logo
+      logoPlaceholder: "SE",
       color: "from-green-600 to-blue-600",
       bgColor: "from-green-600/10 to-blue-600/10"
     },
