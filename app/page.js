@@ -17,6 +17,7 @@ const SectionTitle = ({ title }) => (
 // Navbar Component
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,6 +28,14 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const handleMobileMenuClick = () => {
+    setMobileMenuOpen(false);
+  };
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -51,11 +60,40 @@ const Navbar = () => {
           ))}
         </div>
         {/* Mobile Menu Button */}
-        <button className="md:hidden p-2" suppressHydrationWarning={true}>
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+        <button 
+          className="md:hidden p-2 z-50 relative" 
+          onClick={toggleMobileMenu}
+          suppressHydrationWarning={true}
+        >
+          <svg className={`w-6 h-6 transition-transform duration-300 ${mobileMenuOpen ? 'rotate-90' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            {mobileMenuOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            )}
           </svg>
         </button>
+      </div>
+      
+      {/* Mobile Menu */}
+      <div className={`md:hidden fixed inset-0 bg-white/95 backdrop-blur-md transition-all duration-300 ${
+        mobileMenuOpen 
+          ? 'opacity-100 visible' 
+          : 'opacity-0 invisible'
+      }`}>
+        <div className="flex flex-col items-center justify-center h-full space-y-8">
+          {['About', 'Education', 'Experience', 'Projects', 'Certifications', 'Contact'].map((item) => (
+            <a 
+              key={item}
+              href={`#${item.toLowerCase()}`} 
+              onClick={handleMobileMenuClick}
+              className="text-2xl font-bold text-gray-700 hover:text-blue-600 transition-colors duration-300 relative group"
+            >
+              {item}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+          ))}
+        </div>
       </div>
     </nav>
   );
