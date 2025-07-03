@@ -60,10 +60,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 Visit the live portfolio: [Coming Soon - Will be updated after Vercel deployment]
 
-## 📸 Screenshots
-
-![Portfolio Screenshot](public/profile-pic.png)
-
 ## 🤝 Connect with Me
 
 - **LinkedIn**: [Raghuram Srikanth](https://www.linkedin.com/in/raghuram-srikanth-0088bb286/)
