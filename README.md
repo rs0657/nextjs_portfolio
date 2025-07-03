@@ -1,6 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Raghuram's Portfolio
 
-## Getting Started
+A modern, responsive portfolio website built with Next.js and Tailwind CSS, showcasing my journey as a Computer Science and Engineering student at SRM IST.
+
+## 🚀 Features
+
+- **Responsive Design**: Optimized for all device sizes
+- **Modern UI/UX**: Clean, professional design with smooth animations
+- **Interactive Sections**: Dynamic navbar, hover effects, and smooth scrolling
+- **Comprehensive Content**: About, Education, Experience, Projects, Certifications, and Contact sections
+- **Performance Optimized**: Built with Next.js for fast loading and SEO optimization
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 15
+- **Styling**: Tailwind CSS
+- **Language**: JavaScript (ES6+)
+- **Deployment**: Vercel
+- **Version Control**: Git & GitHub
+
+## 📁 Project Structure
+
+```
+my-portfolio/
+├── app/
+│   ├── page.js          # Main portfolio page
+│   ├── layout.js        # App layout and metadata
+│   ├── globals.css      # Global styles
+│   └── favicon.ico      # Site icon
+├── public/              # Static assets (images, logos, etc.)
+├── package.json         # Project dependencies
+└── README.md           # Project documentation
+```
+
+## 🎯 Sections
+
+1. **Hero Section**: Introduction with profile picture and key skills
+2. **About**: Personal information and core competencies
+3. **Education**: Academic background and achievements
+4. **Experience**: Internships and work experience
+5. **Projects**: Featured projects with technologies used
+6. **Certifications**: Professional certifications and courses
+7. **Contact**: Social links and contact information
+
+## 🚀 Getting Started
 
 First, run the development server:
 
@@ -10,27 +52,34 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🌐 Live Demo
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Visit the live portfolio: [raghuram-portfolio.vercel.app](https://raghuram-portfolio.vercel.app)
 
-## Learn More
+## 📸 Screenshots
 
-To learn more about Next.js, take a look at the following resources:
+![Portfolio Screenshot](public/profile-pic.png)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🤝 Connect with Me
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **LinkedIn**: [Raghuram Srikanth](https://www.linkedin.com/in/raghuram-srikanth-0088bb286/)
+- **GitHub**: [rs0657](https://github.com/rs0657)
+- **Email**: raghuramsrikanth1104@gmail.com
 
-## Deploy on Vercel
+## 📄 License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is open source and available under the [MIT License](LICENSE).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🙏 Acknowledgments
+
+- Built with [Next.js](https://nextjs.org/)
+- Styled with [Tailwind CSS](https://tailwindcss.com/)
+- Deployed on [Vercel](https://vercel.com/)
+
+---
+
+⭐ Star this repository if you found it helpful!
