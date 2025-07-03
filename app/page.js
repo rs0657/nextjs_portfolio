@@ -252,7 +252,7 @@ const Education = () => {
         <SectionTitle title="Education" />
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
           {educationData.map((edu, index) => (
-            <div key={index} className={glassCard + " p-6 relative overflow-hidden aspect-square flex flex-col"}>
+            <div key={index} className={glassCard + " p-6 relative overflow-hidden sm:aspect-square aspect-auto min-h-[400px] flex flex-col"}>
               <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${edu.bgColor} rounded-full -translate-y-10 translate-x-10`}></div>
               <div className="relative z-10 flex flex-col h-full">
                 {/* Logo Section */}
@@ -352,7 +352,7 @@ const Experience = () => {
       title: "Data and Automation Intern",
       company: "Sesheng",
       mode: "Remote",
-      duration: "May 2024 - July 2024",
+      duration: "May 2025 - July 2025",
       location: "Remote",
       description: [
         "Learned Data GAthering and Analysis for NOSQL databases",
