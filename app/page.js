@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect } from 'react'
-
+import Image from 'next/image';
 // Glass card styling for professional look
 const glassCard = "backdrop-blur-md bg-white/80 border border-white/50 shadow-xl rounded-2xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1";
 
@@ -68,9 +68,11 @@ const Hero = () => (
       <div className="mb-8">
         <div className="w-48 h-48 mx-auto mb-6 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 p-1 shadow-2xl">
           <div className="w-full h-full rounded-full overflow-hidden bg-white relative">
-            <img 
+            <Image 
               src="/profile-pic.png" 
               alt="Raghuram - Profile Photo" 
+              width={192} 
+              height={192} 
               className="w-full h-full object-cover rounded-full hover:scale-105 transition-transform duration-300"
               style={{ objectPosition: 'center top' }}
               onError={(e) => {
@@ -85,7 +87,7 @@ const Hero = () => (
           </div>
         </div>
         <h1 className="text-5xl md:text-6xl font-bold mb-4 text-gray-800">
-          Hi, I'm <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Raghuram</span>
+          Hi, I&apos;m <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Raghuram</span>
         </h1>
         <p className="text-xl text-gray-600 mb-8 leading-relaxed">
           Computer Science and Engineering Student at SRM IST
@@ -142,9 +144,11 @@ const About = () => (
           <div className="relative z-10">
             <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 p-1 shadow-lg">
               <div className="w-full h-full rounded-full overflow-hidden bg-white relative">
-                <img 
+                <Image 
                   src="/profile-pic.png" 
                   alt="Raghuram - Profile Photo" 
+                  width={128} 
+                  height={128} 
                   className="w-full h-full object-cover rounded-full"
                   style={{ objectPosition: 'center top' }}
                   onError={(e) => {
@@ -159,8 +163,8 @@ const About = () => (
               </div>
             </div>
             <p className="text-lg text-gray-600 leading-relaxed mb-6">
-              I'm Raghuram, a Computer Science and Engineering student at SRM IST (2022–2026). 
-              Passionate about full-stack development, Embedded systems and data analysis.Enjoy soving solving real time problems with technology.
+              I&apos;m Raghuram, a Computer Science and Engineering student at SRM IST (2022–2026). 
+              Passionate about full-stack development, Embedded systems and data analysis. Enjoy solving real-time problems with technology.
             </p>
             <div className="grid md:grid-cols-3 gap-6 mt-8">
               <div className="text-center">
@@ -255,9 +259,11 @@ const Education = () => {
                 <div className="flex justify-center mb-4">
                   <div className={`w-20 h-20 bg-gradient-to-r ${edu.color} rounded-2xl flex items-center justify-center shadow-lg`}>
                     <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center p-2">
-                      <img 
+                      <Image 
                         src={edu.logoUrl} 
                         alt={`${edu.institution} Logo`} 
+                        width={64} 
+                        height={64} 
                         className="w-full h-full object-contain rounded-lg"
                         onError={(e) => {
                           // Fallback to text if logo fails to load
@@ -443,9 +449,11 @@ const Experience = () => {
                 <div className="flex items-start space-x-4 mb-4">
                   <div className={`w-20 h-20 bg-gradient-to-r ${exp.color} rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg p-1.5`}>
                     <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center">
-                      <img 
+                      <Image 
                         src={exp.logoUrl} 
                         alt={`${exp.company} Logo`} 
+                        width={64} 
+                        height={64} 
                         className="w-full h-full object-contain"
                         onError={(e) => {
                           // Fallback to text if logo fails to load
@@ -661,9 +669,11 @@ const Certifications = () => {
                 {/* Logo Container */}
                 <div className={`w-20 h-20 mx-auto rounded-2xl bg-gradient-to-r ${cert.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                   <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center p-2">
-                    <img 
+                    <Image 
                       src={cert.logoUrl} 
                       alt={`${cert.org} Logo`} 
+                      width={64} 
+                      height={64} 
                       className="w-full h-full object-contain"
                       onError={(e) => {
                         // Fallback to text if logo fails to load
@@ -735,7 +745,7 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 px-6 bg-gradient-to-br from-blue-50 to-purple-50">
       <div className="max-w-6xl mx-auto">
-        <SectionTitle title="Let's Connect" />
+        <SectionTitle title="Let&apos;s Connect" />
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Contact Info */}
           <div className="space-y-8">
@@ -783,9 +793,11 @@ const Contact = () => {
                 className="w-12 h-12 bg-white rounded-xl shadow-lg hover:shadow-xl border border-gray-200 hover:border-blue-300 flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
                 suppressHydrationWarning={true}
               >
-                <img 
+                <Image 
                   src="/linkdln.png" 
                   alt="LinkedIn" 
+                  width={24} 
+                  height={24} 
                   className="w-6 h-6"
                   onError={(e) => {
                     e.target.style.display = 'none';
@@ -802,9 +814,11 @@ const Contact = () => {
                 className="w-12 h-12 bg-white rounded-xl shadow-lg hover:shadow-xl border border-gray-200 hover:border-gray-600 flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
                 suppressHydrationWarning={true}
               >
-                <img 
+                <Image 
                   src="/github-logo.png" 
                   alt="GitHub" 
+                  width={24} 
+                  height={24} 
                   className="w-6 h-6"
                   onError={(e) => {
                     e.target.style.display = 'none';
@@ -819,9 +833,11 @@ const Contact = () => {
                 className="w-12 h-12 bg-white rounded-xl shadow-lg hover:shadow-xl border border-gray-200 hover:border-red-300 flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
                 suppressHydrationWarning={true}
               >
-                <img 
+                <Image 
                   src="/gmail-logo.jpeg" 
                   alt="Gmail" 
+                  width={24} 
+                  height={24} 
                   className="w-6 h-6"
                   onError={(e) => {
                     e.target.style.display = 'none';
