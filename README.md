@@ -58,7 +58,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## 🌐 Live Demo
 
-Visit the live portfolio: [raghuram-portfolio.vercel.app](https://raghuram-portfolio.vercel.app)
+Visit the live portfolio: [Coming Soon - Will be updated after Vercel deployment]
 
 ## 📸 Screenshots
 
@@ -68,6 +68,7 @@ Visit the live portfolio: [raghuram-portfolio.vercel.app](https://raghuram-portf
 
 - **LinkedIn**: [Raghuram Srikanth](https://www.linkedin.com/in/raghuram-srikanth-0088bb286/)
 - **GitHub**: [rs0657](https://github.com/rs0657)
+- **Repository**: [nextjs_portfolio](https://github.com/rs0657/nextjs_portfolio)
 - **Email**: raghuramsrikanth1104@gmail.com
 
 ## 📄 License
