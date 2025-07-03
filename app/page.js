@@ -752,7 +752,7 @@ const Contact = () => {
             <div>
               <h3 className="text-2xl font-bold text-gray-800 mb-4">Get in Touch</h3>
               <p className="text-gray-600 text-lg leading-relaxed">
-                I'm always open to discussing new opportunities, interesting projects, 
+                I&apos;m always open to discussing new opportunities, interesting projects, 
                 or just having a chat about technology and innovation.
               </p>
             </div>
