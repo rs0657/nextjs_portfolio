@@ -21,12 +21,23 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 10;
+      const isScrolled = window.scrollY > 50;
       setScrolled(isScrolled);
     };
 
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setMobileMenuOpen(false);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   const toggleMobileMenu = () => {
@@ -37,65 +48,156 @@ const Navbar = () => {
     setMobileMenuOpen(false);
   };
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [mobileMenuOpen]);
+
+  const navItems = ['About', 'Education', 'Experience', 'Projects', 'Certifications', 'Contact'];
+
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled 
-        ? 'bg-white/90 backdrop-blur-md shadow-lg' 
-        : 'bg-transparent'
-    }`}>
-      <div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
-        <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-          Raghuram
-        </h1>
-        <div className="hidden md:flex space-x-8">
-          {['About', 'Education', 'Experience', 'Projects', 'Certifications', 'Contact'].map((item) => (
-            <a 
-              key={item}
-              href={`#${item.toLowerCase()}`} 
-              className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium relative group"
-            >
-              {item}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-          ))}
+    <>
+      {/* Main Navbar */}
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled 
+          ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200/20' 
+          : 'bg-transparent'
+      }`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo */}
+            <div className="flex-shrink-0">
+              <h1 className={`text-xl sm:text-2xl font-bold transition-all duration-300 ${
+                scrolled 
+                  ? 'text-gray-800' 
+                  : 'text-gray-800 drop-shadow-lg'
+              }`}>
+                Raghuram
+              </h1>
+            </div>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:block">
+              <div className="ml-10 flex items-baseline space-x-4">
+                {navItems.map((item) => (
+                  <a
+                    key={item}
+                    href={`#${item.toLowerCase()}`}
+                    className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 relative group ${
+                      scrolled 
+                        ? 'text-gray-700 hover:text-blue-600 hover:bg-blue-50' 
+                        : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
+                    }`}
+                  >
+                    {item}
+                    <span className={`absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
+                      scrolled ? 'bg-blue-600' : 'bg-blue-600'
+                    }`}></span>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <button
+                onClick={toggleMobileMenu}
+                className={`inline-flex items-center justify-center p-2 rounded-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-inset ${
+                  scrolled 
+                    ? 'text-gray-700 hover:text-blue-600 hover:bg-gray-100 focus:ring-blue-500' 
+                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-100 focus:ring-blue-500'
+                }`}
+                aria-expanded={mobileMenuOpen}
+                aria-label="Toggle navigation menu"
+              >
+                <svg 
+                  className={`h-6 w-6 transition-transform duration-300 ${mobileMenuOpen ? 'rotate-180' : ''}`} 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  {mobileMenuOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                  )}
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
-        {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden p-2 z-50 relative" 
-          onClick={toggleMobileMenu}
-          suppressHydrationWarning={true}
-        >
-          <svg className={`w-6 h-6 transition-transform duration-300 ${mobileMenuOpen ? 'rotate-90' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            {mobileMenuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
-      </div>
-      
-      {/* Mobile Menu */}
-      <div className={`md:hidden fixed inset-0 bg-white/95 backdrop-blur-md transition-all duration-300 ${
+      </nav>
+
+      {/* Mobile Menu Overlay */}
+      <div className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ${
         mobileMenuOpen 
           ? 'opacity-100 visible' 
           : 'opacity-0 invisible'
       }`}>
-        <div className="flex flex-col items-center justify-center h-full space-y-8">
-          {['About', 'Education', 'Experience', 'Projects', 'Certifications', 'Contact'].map((item) => (
-            <a 
-              key={item}
-              href={`#${item.toLowerCase()}`} 
+        {/* Backdrop */}
+        <div 
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm"
+          onClick={handleMobileMenuClick}
+        ></div>
+        
+        {/* Mobile Menu Panel */}
+        <div className={`fixed top-0 right-0 h-full w-80 max-w-sm bg-white shadow-2xl transform transition-transform duration-300 ${
+          mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}>
+          {/* Mobile Menu Header */}
+          <div className="flex items-center justify-between p-4 border-b border-gray-200">
+            <h2 className="text-lg font-semibold text-gray-800">Navigation</h2>
+            <button
               onClick={handleMobileMenuClick}
-              className="text-2xl font-bold text-gray-700 hover:text-blue-600 transition-colors duration-300 relative group"
+              className="p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors duration-200"
+              aria-label="Close menu"
             >
-              {item}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-          ))}
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          
+          {/* Mobile Menu Items */}
+          <div className="py-6 px-4">
+            <div className="space-y-2">
+              {navItems.map((item, index) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  onClick={handleMobileMenuClick}
+                  className="block px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 relative group"
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  <div className="flex items-center justify-between">
+                    <span>{item}</span>
+                    <svg className="h-4 w-4 text-gray-400 group-hover:text-blue-600 transition-colors duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+          
+          {/* Mobile Menu Footer */}
+          <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200">
+            <div className="text-center">
+              <p className="text-sm text-gray-500">© 2025 Raghuram</p>
+            </div>
+          </div>
         </div>
       </div>
-    </nav>
+    </>
   );
 };
 
@@ -202,7 +304,7 @@ const About = () => (
             </div>
             <p className="text-lg text-gray-600 leading-relaxed mb-6">
               I&apos;m Raghuram, a Computer Science and Engineering student at SRM IST (2022–2026). 
-              Passionate about full-stack development, Embedded systems and data analysis. Enjoy solving real-time problems with technology.
+              Passionate about full-stack development, embedded systems and data analysis. Enjoy solving real-time problems with technology.
             </p>
             <div className="grid md:grid-cols-3 gap-6 mt-8">
               <div className="text-center">
@@ -252,7 +354,7 @@ const Education = () => {
       grade: "CGPA: 9.09",
       gradeType: "cgpa",
       logoPlaceholder: "SRM",
-      logoUrl: "/srm-logo.png", // Add your SRM logo file to public folder
+      logoUrl: "/srm-logo.png", // SRM logo
       color: "from-blue-600 to-purple-600",
       bgColor: "from-blue-600/10 to-purple-600/10"
     },
@@ -378,9 +480,9 @@ const Experience = () => {
       description: [
         "Worked on full-stack development projects using React and Node.js",
         "Created a Task Management System for internal use",
-        "Collaborated with teamates to enhance application performance and user experience"
+        "Collaborated with teammates to enhance application performance and user experience"
       ],
-      technologies: ["ReactJs", "MongoDB", "ExpressJS", "UI/UX","Github"],
+      technologies: ["React.js", "MongoDB", "Express.js", "UI/UX", "GitHub"],
       logoUrl: "/tcs-logo.png", // Add TCS logo
       logoPlaceholder: "TCS",
       color: "from-green-600 to-blue-600",
@@ -393,11 +495,11 @@ const Experience = () => {
       duration: "May 2025 - July 2025",
       location: "Remote",
       description: [
-        "Learned Data GAthering and Analysis for NOSQL databases",
-        "Helped in datbase and schema design and selection",
-        "Collaborated with senior developers on Application Tracking System (ATS) project Development"
+        "Learned data gathering and analysis for NoSQL databases",
+        "Helped in database and schema design and selection",
+        "Collaborated with senior developers on Application Tracking System (ATS) project development"
       ],
-      technologies: ["MongoDB", "SQL",  ],
+      technologies: ["MongoDB", "SQL", "Database Design"],
       logoUrl: "/Sesheng-Logo.png", // Add Sesheng logo
       logoPlaceholder: "SE",
       color: "from-green-600 to-blue-600",
@@ -406,9 +508,9 @@ const Experience = () => {
      {
       title: "Web Development Intern",
       company: "Gevinst Technologies",
-      mode: "Hybrid",
+      mode: "On-site",
       duration: "May 2024 - July 2024",
-      location: "Remote",
+      location: "Chennai, India",
       description: [
         "Learned Bootstrap, JavaScript, basics of React, and back-end fundamentals",
         "Created internal tools and helped improve UI/UX components",
@@ -425,7 +527,7 @@ const Experience = () => {
       company: "Beyond Pages Trust",
       mode: "Hybrid",
       duration: "June 2024 - July 2024",
-      location: "Remote",
+      location: "Chennai, India",
       description: [
         "Participated in community service and development initiatives aimed at creating a positive impact on local communities.",
         "Involved in outreach activities, organizing events, and leading awareness campaigns.",
@@ -437,41 +539,7 @@ const Experience = () => {
       color: "from-orange-600 to-red-600",
       bgColor: "from-orange-600/10 to-red-600/10"
     },
-   {
-  title: "AI & Machine Learning Virtual Intern",
-  company: "AICTE (in collaboration with Google)",
-  mode: "Remote",
-  duration: "January 2024 - March 2024", // adjust based on actual timeline
-  location: "Virtual",
-  description: [
-    "Completed training on AI/ML fundamentals and model development workflows",
-    "Worked with TensorFlow and Google Colab for building and evaluating models",
-    "Explored ethical AI design and practical problem-solving using machine learning"
-  ],
-  technologies: ["Python", "TensorFlow", "Google Colab", "Supervised Learning", "Unsupervised Learning"],
-  logoUrl: "/aicte-logo.jpeg", // Add appropriate logo
-  logoPlaceholder: "AIML",
-  color: "from-purple-600 to-indigo-600",
-  bgColor: "from-purple-600/10 to-indigo-600/10"
-},
-{
-  title: "Data Science Virtual Intern",
-  company: "AICTE",
-  mode: "Remote",
-  duration: "July 2024 - September 2024", // adjust based on actual timeline
-  location: "Virtual",
-  description: [
-    "Gained practical experience in data analysis, visualization, and machine learning",
-    "Performed data cleaning, wrangling, and exploratory data analysis (EDA)",
-    "Built and evaluated machine learning models for real-world datasets"
-  ],
-  technologies: ["Python", "Pandas", "Matplotlib", "Seaborn", "Scikit-learn"],
-  logoUrl: "/aicte-logo.jpeg", // Add appropriate logo
-  logoPlaceholder: "DS",
-  color: "from-blue-600 to-cyan-600",
-  bgColor: "from-blue-600/10 to-cyan-600/10"
-}
-
+   
   ];
 
   return (
@@ -582,14 +650,6 @@ const Projects = () => {
         icon: "❤️‍🩹"
       }
     ],
-    "Internship Projects": [
-      { 
-        title: "Task Management System",        
-        desc: "Full-stack application developed during TCS internship, featuring task creation, assignment, and tracking functionalities with a user-friendly interface.",
-        tech: ["React", "Node.js", "MongoDB", "Express.js"],
-        icon: "📋"
-      }
-    ],
     "Course and Skill Development Projects": [
       {
         title: "QuickFix",
@@ -599,9 +659,9 @@ const Projects = () => {
       },
 
         {
-      "title": "ReactJS E-commerce",
-      "desc": "A fully functional e-commerce web application built with ReactJS, featuring product browsing, shopping cart, and checkout functionalities.",
-      "tech": ["ReactJS", "Redux", "React Router", "Axios", "Sass", "Bootstrap"],
+      "title": "React.js E-commerce",
+      "desc": "A fully functional e-commerce web application built with React.js, featuring product browsing, shopping cart, and checkout functionalities.",
+      "tech": ["React.js", "Redux", "React Router", "Axios", "Sass", "Bootstrap"],
       "icon": "🛒"
     }]
   };
@@ -650,7 +710,7 @@ const Projects = () => {
 const Certifications = () => {
   const certs = [
     { 
-      title: "CISCO IOT Certificate", 
+      title: "Cisco IoT Certificate", 
       org: "Cisco NetAcad", 
       year: "2024",
       logoUrl: "/cisco-logo.png",
@@ -659,7 +719,7 @@ const Certifications = () => {
       color: "from-blue-500 to-cyan-500"
     },
     { 
-      title: "CISCO Networking Certificate", 
+      title: "Cisco Networking Certificate", 
       org: "Cisco NetAcad", 
       year: "2024",
       logoUrl: "/cisco-logo.png",
@@ -671,7 +731,7 @@ const Certifications = () => {
       title: "Coursera DBMS Certificate", 
       org: "Coursera", 
       year: "2024",
-      logoUrl: "/Coursera-logo.png",
+      logoUrl: "/Coursera-Logo.png", // Coursera logo
       logoPlaceholder: "COURSERA",
       certificateLink: "https://drive.google.com/file/d/14d22egpw8fxDRotmTyzj26nU62PK3p0q/view?usp=sharing",
       color: "from-blue-400 to-blue-600"
