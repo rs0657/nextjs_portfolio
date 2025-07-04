@@ -472,7 +472,7 @@ const Education = () => {
 const Experience = () => {
   const experienceData = [
     {
-      title: "Intern",
+      title: "Project Intern",
       company: "Tata Consultancy Services",
       mode: "On-site",
       duration: "June 2025 - August 2025",
