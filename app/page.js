@@ -439,12 +439,6 @@ const Education = () => {
                       </svg>
                       <span className="font-medium">{edu.duration}</span>
                     </span>
-                    <span className="flex items-center justify-center">
-                      <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <span className="font-semibold text-gray-800">{edu.grade}</span>
-                    </span>
                   </div>
                 </div>
                 
@@ -647,7 +641,8 @@ const Projects = () => {
         title: "Embedded Machine Learning for Early Detection of Heart Attack Symptoms", 
         desc: "A real-time, offline health monitoring system using biomedical sensors and a lightweight ML model deployed on Arduino Nano 33 BLE Sense Rev2 to detect early signs of heart attacks in vehicle drivers.", 
         tech: ["Embedded ML", "Arduino Nano 33 BLE Sense", "TensorFlow Lite", "Biomedical Sensors", "C++"],
-        icon: "❤️‍🩹"
+        icon: "❤️‍🩹",
+        githubLink: "https://github.com/IoT-Health-Monitoring-Devices-in-EV/Embedded-Machine-Learning-for-Early-Detection-of-Heart-Attack-Symptoms.git"
       }
     ],
     "Course and Skill Development Projects": [
@@ -655,15 +650,16 @@ const Projects = () => {
         title: "QuickFix",
         desc: "A web-based platform that connects users with local repair technicians and DIY experts to provide instant or same-day repair services for household items such as furniture, appliances, and electronics. The app promotes sustainability by encouraging repairs instead of replacements, while also supporting the local economy.",
         tech: ["HTML", "CSS", "JavaScript", "Node.js", "Express.js", "MongoDB", "REST APIs", "Agile (Scrum)", "MoSCoW Prioritization"],
-        icon: "🛠️"
+        icon: "🛠️",
+        githubLink: "https://github.com/hanish-rishen/QuickFix.git"
       },
-
-        {
-      "title": "React.js E-commerce",
-      "desc": "A fully functional e-commerce web application built with React.js, featuring product browsing, shopping cart, and checkout functionalities.",
-      "tech": ["React.js", "Redux", "React Router", "Axios", "Sass", "Bootstrap"],
-      "icon": "🛒"
-    }]
+      {
+        "title": "React.js E-commerce",
+        "desc": "A fully functional e-commerce web application built with React.js, featuring product browsing, shopping cart, and checkout functionalities.",
+        "tech": ["React.js", "Redux", "React Router", "Axios", "Sass", "Bootstrap"],
+        "icon": "🛒",
+        "githubLink": "https://github.com/rs0657/ReactJS_Ecommerce.git"
+      }]
   };
   return (
     <section id="projects" className="py-20 px-6 bg-gradient-to-br from-gray-50 to-purple-50">
@@ -684,7 +680,7 @@ const Projects = () => {
                         {proj.title}
                       </h4>
                       <p className="text-gray-600 mb-4 leading-relaxed">{proj.desc}</p>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-2 mb-4">
                         {proj.tech.map((techItem, techIdx) => (
                           <span 
                             key={techIdx} 
@@ -694,6 +690,23 @@ const Projects = () => {
                           </span>
                         ))}
                       </div>
+                      {proj.githubLink && (
+                        <a 
+                          href={proj.githubLink} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded-lg hover:from-gray-700 hover:to-gray-800 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 text-sm font-medium"
+                        >
+                          <Image 
+                            src="/github-logo.png" 
+                            alt="GitHub" 
+                            width={20} 
+                            height={20} 
+                            className="opacity-90"
+                          />
+                          View Repository
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
