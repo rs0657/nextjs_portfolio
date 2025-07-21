@@ -659,7 +659,16 @@ const Projects = () => {
         "tech": ["React.js", "Redux", "React Router", "Axios", "Sass", "Bootstrap"],
         "icon": "🛒",
         "githubLink": "https://github.com/rs0657/ReactJS_Ecommerce.git"
-      }]
+      },
+      {
+        title: "Robotic Arm using ESP32",
+        desc: "WiFi-enabled robotic arm controlled via ESP32, demonstrating IoT integration, real-time motor control, and hardware-software interaction using the Arduino IDE.",
+        tech: ["ESP32", "Arduino IDE", "IoT", "Embedded C"],
+        icon: "🤖",
+        githubLink:"https://github.com/rs0657/Robotic-Arm-ESP32.git"
+}
+
+    ]
   };
   return (
     <section id="projects" className="py-20 px-6 bg-gradient-to-br from-gray-50 to-purple-50">
