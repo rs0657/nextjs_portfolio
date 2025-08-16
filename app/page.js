@@ -259,7 +259,7 @@ const Hero = () => (
           View My Work
         </a>
         <a 
-          href="https://drive.google.com/file/d/1xFShJS2Q4_z6O6bt1yKhM93oH5pNgoEF/view?usp=sharing" 
+          href="https://drive.google.com/file/d/1S2tMNso5SFQGEPO_gOAW45d-J9LcGEhM/view?usp=sharing" 
           target="_blank" 
           rel="noopener noreferrer"
           className="border border-blue-600 text-blue-600 px-8 py-3 rounded-full font-medium hover:bg-blue-600 hover:text-white transition-all duration-300 inline-block" 
